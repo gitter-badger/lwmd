@@ -7,6 +7,10 @@ gem 'rails', '4.1.6'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+
+# UI framework
+gem 'semantic-ui-rails', :git => 'https://github.com/loqman/semantic-ui-rails.git'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,4 +32,3 @@ gem 'spring',      group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
