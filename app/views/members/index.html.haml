@@ -1,0 +1,20 @@
+%table.ui.table.segment
+  %thead
+    %tr
+      %th Active?
+      %th Name
+      %th Email
+      %th Gender
+      %th USAT #
+      %th Birthdate
+      %th Notes
+  %tbody
+    - @members.each do |member|
+      %tr
+        %th= member.active
+        %th= member.name
+        %th= member.email
+        %th= member.gender
+        %th= member.usat_number
+        %th= member.birthdate
+        %th= member.notes

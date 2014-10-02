@@ -14,4 +14,9 @@ class Member < ActiveRecord::Base
   validates_format_of :email,
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
     on: :create
+
+  ### Instance Methods  
+  def name
+    "#{first_name} #{last_name}"
+  end
 end
