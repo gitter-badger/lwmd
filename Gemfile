@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
@@ -13,8 +14,10 @@ gem 'semantic-ui-rails', :git => 'https://github.com/loqman/semantic-ui-rails.gi
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',        group: :doc
 
@@ -32,3 +35,7 @@ gem 'spring',      group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development, :test do
+  gem 'factory_girl_rails' # better test fixtures
+end
