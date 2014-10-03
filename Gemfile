@@ -39,6 +39,13 @@ gem 'spring',      group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :test do
+  gem 'minitest'
+  gem 'minitest-reporters' # test output
+  gem 'capybara-webkit'
+  gem 'capybara_minitest_spec'
+end
+
 group :development, :test do
   gem 'factory_girl_rails' # better test fixtures
 end
