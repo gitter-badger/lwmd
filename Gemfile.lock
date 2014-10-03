@@ -53,6 +53,7 @@ GEM
       capybara (>= 2)
       minitest (>= 2)
     commonjs (0.2.7)
+    database_cleaner (1.2.0)
     erubis (2.7.0)
     execjs (2.2.1)
     factory_girl (4.4.0)
@@ -145,6 +146,7 @@ PLATFORMS
 DEPENDENCIES
   capybara-webkit
   capybara_minitest_spec
+  database_cleaner
   factory_girl_rails
   haml
   jbuilder (~> 2.0)

@@ -44,6 +44,7 @@ group :test do
   gem 'minitest-reporters' # test output
   gem 'capybara-webkit'
   gem 'capybara_minitest_spec'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
