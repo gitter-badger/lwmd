@@ -18,7 +18,8 @@ Postgres isn't too hard to manage. There's a homebrew package, or [Postgres.app]
 is dead simple to install, although it seems to have bugs every few versions.
 
 Once you have the project set up locally, run `bundle install`. Everything
-should be set up for you. To launch the server, enter `rails s`. If all goes
+should be set up for you. To get sample data into the app for testing locally,
+run `rake seed_members`. To launch the server, enter `rails s`. If all goes
 well, you should be able to browse to `http://localhost:3000`
 
 ### Contributing
