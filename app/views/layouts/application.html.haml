@@ -1,0 +1,25 @@
+!!!
+%head
+  / Standard Meta
+  %meta{:charset => "utf-8"}/
+  %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+  %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  / Site Properities
+  %title Pittsburgh Triathlon Club Membership Directory
+  %meta{:content => "A membership directory for the Pittsburgh Triathlon Club", :name => "description"}/
+  %meta{:content => "membership directory", :name => "keywords"}/
+  %link{:href => "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700", :rel => "stylesheet", :type => "text/css"}/
+  = stylesheet_link_tag    'application', media: 'all'
+  = javascript_include_tag    'application'
+  :css
+    * {
+        font-family: 'Open Sans', sans-serif;
+    }
+  = csrf_meta_tags
+%body
+  .ui.main.menu
+    .item
+      = image_tag("tri-club-logo.png", alt:"PTC Logo")
+    .item
+      %b Pittsburgh Triathlon Club Membership Directory
+  = yield
