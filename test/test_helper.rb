@@ -5,7 +5,7 @@ require "capybara/rails"
 require 'helpers/factory_helper'
 require 'database_cleaner'
 
-Capybara.default_driver = :webkit
+Capybara.default_driver = :rack_test
 
 DatabaseCleaner.strategy = :truncation
 
