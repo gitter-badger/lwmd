@@ -13,10 +13,7 @@ gem 'haml'
 gem 'sass-rails', '~> 4.0.3'
 
 # UI framework
-gem 'therubyracer', platforms: :ruby # needed by Semantic UI
-gem 'less-rails'
-gem 'autoprefixer-rails'
-gem 'semantic-ui-rails', :git => 'https://github.com/loqman/semantic-ui-rails.git'
+gem 'semantic-ui-sass', github: 'jwrubel/semantic-ui-sass'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
