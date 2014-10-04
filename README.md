@@ -20,3 +20,9 @@ is dead simple to install, although it seems to have bugs every few versions.
 Once you have the project set up locally, run `bundle install`. Everything
 should be set up for you. To launch the server, enter `rails s`. If all goes
 well, you should be able to browse to `http://localhost:3000`
+
+### Contributing
+* Clone the repository locally: `git clone git@github.com:PittsburghTriClub/lwmd.git`
+* Make your changes locally
+* Please add tests if you add functionality
+* Submit a [pull request](https://github.com/PittsburghTriClub/lwmd/pulls)
