@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserTest < UnitTest
+class MemberTest < UnitTest
 
   describe "valid member data" do
     it "should save valid member data" do
