@@ -39,6 +39,8 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'coffee-rails'
+
 group :test do
   gem 'minitest'
   gem 'minitest-reporters' # test output
