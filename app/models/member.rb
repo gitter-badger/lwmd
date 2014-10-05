@@ -1,6 +1,9 @@
 class Member < ActiveRecord::Base
   enum gender: [ :male, :female ]
 
+  ### Relations
+  has_one :address, dependent: :destroy
+  
   ### Validations
   validates :first_name,
     presence: true
@@ -15,7 +18,7 @@ class Member < ActiveRecord::Base
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
     on: :create
 
-  ### Instance Methods  
+  ### Instance Methods
   def name
     "#{first_name} #{last_name}"
   end
