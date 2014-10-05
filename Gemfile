@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
+
+gem 'rails_12factor' #for heroku platform features
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
@@ -14,6 +18,7 @@ gem 'sass-rails', '~> 4.0.3'
 
 # UI framework
 gem 'semantic-ui-sass', github: 'jwrubel/semantic-ui-sass'
+gem 'StreetAddress', '1.0.3', :require => "street_address" # E-Z Addresses
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
