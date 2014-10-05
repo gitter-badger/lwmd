@@ -12,3 +12,4 @@
 //
 //= require jquery.min
 //= require semantic-ui
+//= require inputs
