@@ -1,1 +1,42 @@
-%p Yo
+= form_for @member do |f|
+  .ui.form.fluid
+    .two.fields
+      .field
+        = f.label :first_name
+        .ui.icon.input
+          = f.text_field :first_name, placeholder: "First Name"
+          .ui.corner.label
+            %i.icon.red.asterisk
+      .field
+        = f.label :last_name
+        .ui.icon.input
+          = f.text_field :last_name, placeholder: "Last Name"
+          .ui.corner.label
+            %i.icon.red.asterisk
+    .two.fields
+      .field
+        = f.label :email
+        .ui.icon.input
+          = f.email_field :email, placeholder: "email@domain.com"
+          .ui.corner.label
+            %i.icon.red.asterisk
+      .field
+        %label Gender
+        .ui.selection.dropdown
+          = f.hidden_field :gender
+          .default.text ...
+          %i.dropdown.icon
+          .menu
+            .item{"data-value" => "male"} Male
+            .item{"data-value" => "female"} Female
+    .two.fields
+      .date.field
+        = f.label :birthdate
+        = f.text_field :birthdate, placeholder: "xx/xx/xxxx"
+      .field
+        = f.label :usat_number
+        = f.text_field :usat_number, placeholder: "USAT number"
+    .field
+      = f.label :notes
+      = f.text_area :notes
+    = f.submit "Add Member", class: "ui blue small submit button"

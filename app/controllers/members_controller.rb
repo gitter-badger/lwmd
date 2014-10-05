@@ -5,13 +5,17 @@ class MembersController < ApplicationController
   end
 
   def new
+    @member = Member.new
   end
 
   def create
     @member = Member.new(member_params)
 
-    @member.save
-    redirect_to members_path, notice: "Member added successfully"
+    if @member.save
+      redirect_to members_path, notice: "Member added successfully"
+    else
+      render "new"
+    end
   end
 
   private
