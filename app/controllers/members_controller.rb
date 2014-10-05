@@ -12,7 +12,8 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
 
     if @member.save
-      redirect_to members_path, notice: "Member added successfully"
+      flash[:notice] = "Member added successfully"
+      redirect_to members_path
     else
       render "new"
     end

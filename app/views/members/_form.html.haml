@@ -1,5 +1,12 @@
 = form_for @member do |f|
   .ui.form.fluid
+    - if @member.errors.any?
+      .ui.red.message
+        .ui.header
+          Oops! There was a problem with your submission
+          %ul
+            - @member.errors.full_messages.each do |msg|
+              %li= msg
     .two.fields
       .field
         = f.label :first_name
@@ -34,7 +41,7 @@
         = f.label :birthdate
         = f.text_field :birthdate, placeholder: "xx/xx/xxxx"
       .field
-        = f.label :usat_number
+        = f.label :usat_number, "USAT Number"
         = f.text_field :usat_number, placeholder: "USAT number"
     .field
       = f.label :notes
