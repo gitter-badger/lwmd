@@ -43,6 +43,10 @@
       .field
         = f.label :usat_number, "USAT Number"
         = f.text_field :usat_number, placeholder: "USAT number"
+    = f.fields_for :address do |address_fields|
+      .field
+        = address_fields.label :full_address
+        = address_fields.text_field :full_address, placeholder: "123 Any Street, Pittsburgh, PA 15222"
     .field
       = f.label :notes
       = f.text_area :notes

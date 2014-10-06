@@ -19,10 +19,12 @@ class UserIntegrationTest < IntegrationTest
       fill_in 'Email', :with => 'user@example.com'
       fill_in 'Birthdate', :with => '3/3/1978'
       fill_in 'USAT Number', :with => '20120434234'
+      fill_in 'Full address', :with => '123 Fake Street, Anytown, KS 55555'
       fill_in 'Notes', :with => 'These are notes'
     end
     click_button 'Add Member'
     page.must_have_css('.ui.blue.message.closable')
+    Address.last.city.must_equal 'Anytown'
   end
 
   it "wont add a member with missing or invalid" do

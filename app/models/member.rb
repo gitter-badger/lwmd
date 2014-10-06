@@ -3,7 +3,8 @@ class Member < ActiveRecord::Base
 
   ### Relations
   has_one :address, dependent: :destroy
-  
+
+  accepts_nested_attributes_for :address
   ### Validations
   validates :first_name,
     presence: true
