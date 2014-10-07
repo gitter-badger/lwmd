@@ -19,6 +19,7 @@ gem 'sass-rails', '~> 4.0.3'
 # UI framework
 gem 'semantic-ui-sass', github: 'jwrubel/semantic-ui-sass'
 gem 'StreetAddress', '1.0.3', :require => "street_address" # E-Z Addresses
+gem 'phony_rails' # phone number formatting
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
