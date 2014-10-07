@@ -39,6 +39,8 @@ class MembersController < ApplicationController
                     :birthdate,
                     :gender,
                     :usat_number,
+                    :cell_phone,
+                    :home_phone,
                     :notes,
                     {address_attributes: [:full_address]})
     end

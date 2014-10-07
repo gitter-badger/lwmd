@@ -47,6 +47,17 @@
       .field
         = address_fields.label :full_address
         = address_fields.text_field :full_address, placeholder: "123 Any Street, Pittsburgh, PA 15222"
+    .two.fields
+      .field
+        = f.label :cell_phone
+        .ui.left.labeled.icon.input
+          = f.text_field :cell_phone, placeholder: "(555)-555-5555"
+          %i.phone.icon
+      .field
+        = f.label :home_phone
+        .ui.left.labeled.icon.input
+          = f.text_field :home_phone, placeholder: "(555)-555-5555"
+          %i.phone.icon
     .field
       = f.label :notes
       = f.text_area :notes
