@@ -4,5 +4,6 @@ FactoryGirl.define do
     last_name
     email
     active true
+    cell_phone "555-555-1212"
   end
 end

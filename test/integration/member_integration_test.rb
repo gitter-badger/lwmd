@@ -19,6 +19,7 @@ class UserIntegrationTest < IntegrationTest
       fill_in 'Email', :with => 'user@example.com'
       fill_in 'Birthdate', :with => '3/3/1978'
       fill_in 'USAT Number', :with => '20120434234'
+      fill_in 'Cell phone', :with => "555-555-1212"
       fill_in 'Full address', :with => '123 Fake Street, Anytown, KS 55555'
       fill_in 'Notes', :with => 'These are notes'
     end
@@ -35,5 +36,7 @@ class UserIntegrationTest < IntegrationTest
     page.must_have_content("Last name can't be blank")
     page.must_have_content("Email can't be blank")
     page.must_have_content("Email is invalid")
+    page.must_have_content("Cell phone is required if home phone isn't given")
+    page.must_have_content("Home phone is required if cell phone isn't given")
   end
 end
