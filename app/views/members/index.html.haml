@@ -20,14 +20,27 @@
       %th Gender
       %th USAT #
       %th Birthdate
-      %th Notes
+      %th Address
+      %th
+        Cell Phone
+      %th Home Phone
   %tbody
     - @members.each do |member|
       %tr
-        %th= member.active
-        %th= member.name
-        %th= member.email
-        %th= member.gender
-        %th= member.usat_number
-        %th= member.birthdate
-        %th= member.notes
+        %td
+          - if member.active?
+            %i.green.checked.checkbox.icon
+        %td= member.name
+        %td= mail_to member.email
+        %td= member.gender
+        %td= member.usat_number
+        %td= member.birthdate
+        %td
+          - unless member.address.nil?
+            = member.address.to_s
+        %td
+          - if member.cell_phone.present?
+            = member.cell_phone.phony_formatted(normalize: :US, spaces: '-')
+        %td
+          - if member.home_phone.present?
+            = member.home_phone.phony_formatted(normalize: :US, spaces: '-')
