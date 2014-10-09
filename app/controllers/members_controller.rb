@@ -11,16 +11,6 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
-    # this could be refactored to get out of the controller at some point
-    if params[:member][:address_attributes][:full_address].present?
-      entered_address = params[:member][:address_attributes][:full_address]
-      parsed_address = StreetAddress::US.parse(entered_address)
-      @address = @member.build_address
-      @address.line1 = parsed_address.line1
-      @address.city = parsed_address.city
-      @address.state = parsed_address.state
-      @address.postal_code = parsed_address.postal_code
-    end
 
     if @member.save
       flash[:notice] = "Member added successfully"
@@ -32,7 +22,11 @@ class MembersController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
-    @address = @member.build_address
+    if @member.address.present?
+      @address = @member.address
+    else
+      @member.build_address
+    end
   end
 
   def update

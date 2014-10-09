@@ -7,10 +7,7 @@ task seed_members: [:environment] do
       birthdate:    '1985-10-26',
       gender:       0,
       usat_number:  '2012000000001',
-      address: Address.create!(line1: "123 Any Street",
-                               city: "Pittsburgh",
-                               state: "PA",
-                               postal_code: "15222"),
+      address: Address.create!(full_address: "123 Any Street, Pittsburgh PA 15222"),
       cell_phone: "555-555-5555"}
   ]
 

@@ -37,7 +37,7 @@
         %td= member.birthdate
         %td
           - unless member.address.nil?
-            = member.address.to_s
+            = member.address.full_address
         %td
           - if member.cell_phone.present?
             = member.cell_phone.phony_formatted(normalize: :US, spaces: '-')
