@@ -13,7 +13,7 @@ class UserIntegrationTest < IntegrationTest
 
   it "adds a new member" do
     visit new_member_path
-    within("#new_member") do
+    within("form.new_member") do
       fill_in 'First Name', :with => 'First'
       fill_in 'Last Name', :with => 'Last'
       fill_in 'Email', :with => 'user@example.com'
@@ -38,5 +38,21 @@ class UserIntegrationTest < IntegrationTest
     page.must_have_content("Email is invalid")
     page.must_have_content("Cell phone is required if home phone isn't given")
     page.must_have_content("Home phone is required if cell phone isn't given")
+  end
+
+  it "edits a member" do
+    @member = create(:member)
+    visit edit_member_path(@member)
+    within("form.edit_member") do
+      page.find('#member_last_name').value.must_equal @member.last_name
+      fill_in 'Cell phone', :with => "555-555-1212"
+      fill_in 'Full address', :with => '123 Fake Street, Anytown, KS 55555'
+    end
+    click_button 'Save'
+    page.must_have_css('.ui.blue.message.closable')
+     # phony gem normalizes phone number on save
+     # but formatting is stripped in tests
+    @member.cell_phone.must_equal "15555551212"
+    @member.address.city.must_equal "Anytown"
   end
 end
