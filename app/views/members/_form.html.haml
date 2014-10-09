@@ -61,4 +61,4 @@
     .field
       = f.label :notes
       = f.text_area :notes
-    = f.submit "Add Member", class: "ui blue small submit button"
+    = f.submit "#{@member.new_record? ? 'Add Member' : 'Save'}", class: "ui blue small submit button"

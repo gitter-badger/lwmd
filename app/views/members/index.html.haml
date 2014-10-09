@@ -30,7 +30,7 @@
         %td
           - if member.active?
             %i.green.checked.checkbox.icon
-        %td= member.name
+        %td= link_to member.name, edit_member_path(member)
         %td= mail_to member.email
         %td= member.gender
         %td= member.usat_number

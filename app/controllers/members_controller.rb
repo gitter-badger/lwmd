@@ -30,6 +30,22 @@ class MembersController < ApplicationController
     end
   end
 
+  def edit
+    @member = Member.find(params[:id])
+    @address = @member.build_address
+  end
+
+  def update
+    @member = Member.find(params[:id])
+
+    if @member.update(member_params)
+      flash[:notice] = "Member updated successfully"
+      redirect_to members_path
+    else
+      render "edit"
+    end
+  end
+
   private
     def member_params
       params.require(:member)
