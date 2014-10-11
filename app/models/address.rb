@@ -12,7 +12,6 @@ class Address < ActiveRecord::Base
   ### Private Methods
   private
   def break_apart_address
-    puts "address is #{self.full_address}"
     address = StreetAddress::US.parse(self.full_address)
     unless address.nil?
       self.line1 = address.line1
