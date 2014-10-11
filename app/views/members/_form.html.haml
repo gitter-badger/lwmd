@@ -28,7 +28,7 @@
           .ui.corner.label
             %i.icon.red.asterisk
       .field
-        %label Gender
+        = f.label :gender
         .ui.selection.dropdown
           = f.hidden_field :gender
           .default.text ...
@@ -58,7 +58,13 @@
         .ui.left.labeled.icon.input
           = f.text_field :home_phone, placeholder: "(555)-555-5555"
           %i.phone.icon
-    .field
-      = f.label :notes
-      = f.text_area :notes
+    .two.fields
+      .field
+        = f.label :notes
+        = f.text_area :notes
+      .inline.field
+        .ui.slider.checkbox
+          = f.check_box :active
+          = f.label :active
+        %label
     = f.submit "#{@member.new_record? ? 'Add Member' : 'Save'}", class: "ui blue small submit button"

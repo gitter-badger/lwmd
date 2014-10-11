@@ -48,6 +48,7 @@ class MembersController < ApplicationController
                     :email,
                     :birthdate,
                     :gender,
+                    :active,
                     :usat_number,
                     :cell_phone,
                     :home_phone,

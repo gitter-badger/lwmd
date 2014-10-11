@@ -55,4 +55,16 @@ class UserIntegrationTest < IntegrationTest
     @member.cell_phone.must_equal "15555551212"
     @member.address.city.must_equal "Anytown"
   end
+
+  it "deactivates a member" do
+    @member = create(:member)
+    visit edit_member_path(@member)
+    within("form.edit_member") do
+      find("#member_active").set(false)
+    end
+    click_button 'Save'
+    within("tr##{@member.id}") do
+      page.wont_have_css('i')
+    end
+  end
 end
