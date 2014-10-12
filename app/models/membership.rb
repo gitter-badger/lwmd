@@ -1,5 +1,5 @@
 class Membership < ActiveRecord::Base
-  CATEGORIES = [ :individual, :family ]
+  CATEGORIES = [ "Individual", "Family" ]
 
   ### Relations
   has_many :member_memberships
@@ -8,7 +8,8 @@ class Membership < ActiveRecord::Base
   ### Validations
 
   validates :category,
-    presence: true
+    presence: true,
+    inclusion: { in: CATEGORIES }
 
   validates :price_paid,
     presence: true
