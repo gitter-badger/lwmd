@@ -1,0 +1,54 @@
+= form_for @membership do |f|
+  .ui.form.fluid
+    - if @membership.errors.any?
+      .ui.red.message
+        .ui.header
+          Oops! There was a problem with your submission
+          %ul
+            - @membership.errors.full_messages.each do |msg|
+              %li= msg
+    .two.fields
+      .field
+        = f.label :category
+        .ui.fluid.selection.dropdown
+          = f.hidden_field :category, value: "#{Membership::CATEGORIES.first}"
+          .default.text
+            = Membership::CATEGORIES.first
+          %i.dropdown.icon
+          .menu
+            - Membership::CATEGORIES.each do |c|
+              .item{"data-value" => "#{c}"} #{c}
+
+      .field
+        = f.label :price_paid
+        .ui.icon.input
+          = f.text_field :price_paid, placeholder: "$40"
+          .ui.corner.label
+            %i.icon.red.asterisk
+    .two.fields
+      .field
+        = f.label :year
+        .ui.icon.input
+          = f.text_field :year, placeholder: "#{Date.today.year}"
+          .ui.corner.label
+            %i.icon.red.asterisk
+      .field
+        .date.field
+          = f.label :date_paid
+          .ui.icon.input
+            = f.text_field :date_paid, placeholder: "#{Date.today}"
+            .ui.corner.label
+              %i.icon.red.asterisk
+    = f.fields_for :member do |member_fields|
+      .two.fields
+        .field
+          = member_fields.label "Member"
+          .ui.fluid.selection.dropdown
+            = member_fields.hidden_field :id
+            .default.text Select the primary member for the membership
+            %i.dropdown.icon
+            .menu
+              - @members.each do |m|
+                .item{"data-value" => "#{m.id}"} #{m.name}
+        .field
+    = f.submit "#{@membership.new_record? ? 'Add Member' : 'Save'}", class: "ui blue small submit button"

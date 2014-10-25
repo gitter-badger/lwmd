@@ -3,7 +3,7 @@ class Member < ActiveRecord::Base
 
   ### Relations
   has_one :address, dependent: :destroy
-  has_many :member_memberships
+  has_many :member_memberships, inverse_of: :member
   has_many :memberships, through: :member_memberships
 
   accepts_nested_attributes_for :address

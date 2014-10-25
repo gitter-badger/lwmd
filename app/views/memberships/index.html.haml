@@ -1,0 +1,33 @@
+- flash.each do |key, value|
+  %div{:class => "#{flash_class(key)} closable"}
+    %i.close.icon
+    = value
+.two.column.stackable.ui.grid
+  .column
+    %h2.ui.header
+      Memberships
+  .column.right.aligned
+    = link_to(new_membership_path) do
+      .ui.blue.labeled.icon.button
+        %i.user.icon
+        Add Membership
+%table.ui.table.segment
+  %thead
+    %tr
+      %th Year
+      %th Category
+      %th Date Paid
+      %th Expires
+      %th Member Count
+      %th Actions
+  %tbody
+    - @memberships.each do |ms|
+      %tr{id: "#{ms.id}"}
+        %td= ms.year
+        %td= ms.category
+        %td= ms.date_paid
+        %td= ms.expires_on
+        %td
+          - if ms.members.any?
+            = ms.members.first.name
+        %td

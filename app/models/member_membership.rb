@@ -5,7 +5,11 @@ class MemberMembership < ActiveRecord::Base
   belongs_to :membership
 
   ### Validations
+  validates_presence_of :member
+  validates_presence_of :membership
 
+  accepts_nested_attributes_for :member
+  
   ### Instance Methods
 
 end
