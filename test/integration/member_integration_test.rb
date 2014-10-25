@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserIntegrationTest < IntegrationTest
+class MemberIntegrationTest < IntegrationTest
   before do
 
   end
