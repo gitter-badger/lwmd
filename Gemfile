@@ -54,6 +54,7 @@ group :test do
   gem 'capybara_minitest_spec'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'm', '~> 1.3.1'
 end
 
 group :development, :test do
