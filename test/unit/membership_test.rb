@@ -24,7 +24,21 @@ class MembershipTest < UnitTest
     end
 
     it "only allows one member for an individual membership" do
+      membership = build(:membership, category: "Individual")
+      member = create(:member)
+      another_member = create(:member)
+      membership.members << member
+      membership.members << another_member
+      membership.save.must_equal false
+    end
 
+    it "Doesnt allow more than the max members per membership" do
+      membership = build(:membership, category: "Family")
+      5.times do
+        member = create(:member)
+        membership.members << member
+      end
+      membership.save.must_equal false
     end
   end
 end

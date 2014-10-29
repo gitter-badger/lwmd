@@ -7,9 +7,10 @@ class MemberMembership < ActiveRecord::Base
   ### Validations
   validates_presence_of :member
   validates_presence_of :membership
-
-  accepts_nested_attributes_for :member
+  validates_associated :membership
   
+  accepts_nested_attributes_for :member
+
   ### Instance Methods
 
 end
