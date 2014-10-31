@@ -48,6 +48,10 @@ class Membership < ActiveRecord::Base
     members.reject(&:marked_for_destruction?)
   end
 
+  def member_ids
+    members.pluck(:id)
+  end
+
   ### Private Methods
   private
   def has_a_member
@@ -55,7 +59,6 @@ class Membership < ActiveRecord::Base
   end
 
   def max_one_member_for_individual_plan
-    puts "Count is #{total_members.count}"
     if total_members.count > 1 && category == "Individual"
       errors.add :members, "Only one member allowed in this plan"
     end
@@ -66,4 +69,5 @@ class Membership < ActiveRecord::Base
       errors.add :members, "Only #{MAX_FAMILY_MEMBERS} members allowed per membership"
     end
   end
+
 end
