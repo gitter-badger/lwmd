@@ -33,6 +33,9 @@ class Membership < ActiveRecord::Base
   end
 
   ### Methods
+  def self.member_ids_for_year(year)
+    Membership.joins(:members).where(year: year).pluck('members.id')
+  end
 
   ### Instance Methods
   def expires_on
