@@ -9,7 +9,8 @@ class Membership < ActiveRecord::Base
                               class_name: "MemberMemberships"
   has_many :members, through: :member_memberships
 
-  accepts_nested_attributes_for :members
+  accepts_nested_attributes_for :member_memberships,
+    reject_if: proc { |m| m[:member_id].blank? }
 
   ### Validations
 
@@ -38,6 +39,14 @@ class Membership < ActiveRecord::Base
   end
 
   ### Instance Methods
+  def build_family
+    3.times { member_memberships.build }
+  end
+
+  def build_primary
+    member_memberships.build(primary: true)
+  end
+
   def expires_on
     # in this use case, expiration is always based on
     # calendar year. So this is a date object set to the
@@ -47,8 +56,8 @@ class Membership < ActiveRecord::Base
     expiration_date.at_end_of_year
   end
 
-  def total_members
-    members.reject(&:marked_for_destruction?)
+  def total_member_memberships
+    member_memberships.reject(&:marked_for_destruction?)
   end
 
   def member_ids
@@ -58,17 +67,17 @@ class Membership < ActiveRecord::Base
   ### Private Methods
   private
   def has_a_member
-    errors.add :members, "You need at least one member" if total_members.empty?
+    errors.add :members, "You need at least one member" if total_member_memberships.empty?
   end
 
   def max_one_member_for_individual_plan
-    if total_members.count > 1 && category == "Individual"
+    if total_member_memberships.count > 1 && category == "Individual"
       errors.add :members, "Only one member allowed in this plan"
     end
   end
 
   def max_members_for_family_plan
-    if total_members.count > MAX_FAMILY_MEMBERS
+    if total_member_memberships.count > MAX_FAMILY_MEMBERS
       errors.add :members, "Only #{MAX_FAMILY_MEMBERS} members allowed per membership"
     end
   end

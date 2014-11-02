@@ -7,25 +7,14 @@
           %ul
             - @membership.errors.full_messages.each do |msg|
               %li= msg
-    .two.fields
-      .field
-        = f.label :category
-        .ui.fluid.selection.dropdown
-          = f.hidden_field :category, value: "#{Membership::CATEGORIES.first}"
-          .default.text
-            = Membership::CATEGORIES.first
-          %i.dropdown.icon
-          .menu
-            - Membership::CATEGORIES.each do |c|
-              .item{"data-value" => "#{c}"} #{c}
-
+    .three.fields
+      =f.hidden_field :category, value: @category
       .field
         = f.label :price_paid
         .ui.icon.input
           = f.text_field :price_paid, placeholder: "$40"
           .ui.corner.label
             %i.icon.red.asterisk
-    .two.fields
       .field
         = f.label :year
         .ui.icon.input
@@ -39,13 +28,17 @@
             = f.text_field :date_paid, placeholder: "#{Date.today}"
             .ui.corner.label
               %i.icon.red.asterisk
-    = f.fields_for :member do |member_fields|
+    = f.fields_for :member_memberships do |mm_fields|
+      = mm_fields.hidden_field :primary
       .two.fields
         .field
-          = member_fields.label "Member"
+          - if mm_fields.object.primary?
+            = mm_fields.label "Primary Member"
+          - else
+            = mm_fields.label "Family Member"
           .ui.fluid.selection.dropdown
-            = member_fields.hidden_field :id
-            .default.text Select the primary member for the membership
+            = mm_fields.hidden_field :member_id
+            .default.text Select a member
             %i.dropdown.icon
             .menu
               - @members.each do |m|

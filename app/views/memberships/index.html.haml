@@ -2,15 +2,20 @@
   %div{:class => "#{flash_class(key)} closable"}
     %i.close.icon
     = value
-.two.column.stackable.ui.grid
+.three.column.stackable.ui.grid
   .column
     %h2.ui.header
       Memberships
   .column.right.aligned
-    = link_to(new_membership_path) do
-      .ui.blue.labeled.icon.button
+    = link_to new_membership_path do
+      .ui.red.labeled.icon.button
         %i.user.icon
-        Add Membership
+        Add Individual Membership
+  .column.right.aligned
+    = link_to new_membership_path(category: "Family") do
+      .ui.blue.labeled.icon.button
+        %i.users.icon
+        Add Family Membership
 %table.ui.table.segment
   %thead
     %tr

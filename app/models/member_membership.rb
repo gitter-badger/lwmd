@@ -14,6 +14,9 @@ class MemberMembership < ActiveRecord::Base
   accepts_nested_attributes_for :member
 
   ### Instance Methods
+  def primary?
+    primary
+  end
 
   private
   def has_only_one_membership_per_year

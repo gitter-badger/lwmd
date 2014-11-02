@@ -6,24 +6,23 @@ class MembershipsController < ApplicationController
 
   def new
     @membership = Membership.new
-    @membership.members.build
+    @category = params[:category].present? ? "Family" : "Individual"
+    @membership.build_primary
+    if params[:category].present? && params[:category] == "Family"
+      @membership.build_family
+    end
     @members = Member.all
   end
 
   def create
-    @membership = Membership.new(membership_params.except(:member))
-    if params[:membership][:member][:id].present?
-      @member = Member.find(params[:membership][:member][:id])
-      # strong params hates my custom :member parameter
-      @membership.members << @member
-    end
+    @membership = Membership.new(membership_params)
 
     if @membership.save
       flash[:notice] = "Membership added successfully"
       redirect_to memberships_path
     else
       @members = Member.all
-      render "new"
+      render "new", category: params[:category]
     end
   end
 
@@ -34,6 +33,6 @@ class MembershipsController < ApplicationController
                     :price_paid,
                     :year,
                     :date_paid,
-                    member:  [:id])
+                    member_memberships_attributes:  [:primary, :member_id])
   end
 end
