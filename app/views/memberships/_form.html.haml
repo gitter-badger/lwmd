@@ -37,11 +37,11 @@
           - else
             = mm_fields.label "Family Member"
           .ui.fluid.selection.dropdown
-            = mm_fields.hidden_field :member_id
+            = mm_fields.hidden_field :member_id, {id: "membership_#{mm_fields.index}"}
             .default.text Select a member
             %i.dropdown.icon
             .menu
               - @members.each do |m|
                 .item{"data-value" => "#{m.id}"} #{m.name}
         .field
-    = f.submit "#{@membership.new_record? ? 'Add Member' : 'Save'}", class: "ui blue small submit button"
+    = f.submit "#{@membership.new_record? ? 'Add Membership' : 'Save'}", class: "ui blue small submit button"
