@@ -5,9 +5,15 @@ class Membership < ActiveRecord::Base
 
   ### Relations
   has_many :member_memberships, inverse_of: :membership
-  has_one :primary_member, -> { where primary: true },
-                              class_name: "MemberMemberships"
   has_many :members, through: :member_memberships
+  has_one :primary_member_membership, -> { where primary: true },
+                              class_name: "MemberMembership"
+  has_one :primary_member, through: :primary_member_membership,
+                              source: :member
+  has_many :family_member_memberships, -> { where(primary: nil) },
+                              class_name: "MemberMembership"
+  has_many :family_members, through: :family_member_memberships,
+                              source: :member
 
   accepts_nested_attributes_for :member_memberships,
     reject_if: proc { |m| m[:member_id].blank? }

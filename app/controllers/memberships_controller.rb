@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
 
   def index
-    @memberships = Membership.order('lower(members.last_name)').joins(:members)
+    @memberships = Membership.joins(:members).uniq
   end
 
   def new

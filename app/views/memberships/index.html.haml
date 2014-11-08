@@ -33,6 +33,14 @@
         %td= ms.date_paid
         %td= ms.expires_on
         %td
-          - if ms.members.any?
-            = ms.members.first.name
+          .list
+            - if ms.primary_member.present?
+              .item
+                %i.large.user.icon
+                #{ms.primary_member.name}
+            - if ms.family_members.any?
+              - ms.family_members.each do |member|
+                .item
+                  %i.small.user.icon
+                  = member.name
         %td
