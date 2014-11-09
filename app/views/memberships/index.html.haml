@@ -2,10 +2,19 @@
   %div{:class => "#{flash_class(key)} closable"}
     %i.close.icon
     = value
-.three.column.stackable.ui.grid
+.four.column.stackable.ui.grid
   .column
     %h2.ui.header
       Memberships
+  .column
+    .ui.selection.dropdown
+      %input{name: "year", type: "hidden", id: "year_selector"}
+      .default.text #{@current_year}
+      %i.dropdown.icon
+      .menu
+        - @years.each do |year|
+          .item{"data-value" => "#{year}"}
+            #{year}
   .column.right.aligned
     = link_to new_membership_path do
       .ui.red.labeled.icon.button

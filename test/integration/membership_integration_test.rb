@@ -27,6 +27,25 @@ class MembershipIntegrationTest < IntegrationTest
     end
   end
 
+  it "changes the year to see membership history" do
+    current_membership = build(:individual_membership, year: Date.today.year)
+    current_mm = build(:member_membership, member: create(:member), primary: true)
+    current_membership.member_memberships << current_mm
+    current_membership.save
+
+    old_membership = build(:individual_membership, year: 2013)
+    old_mm = build(:member_membership, member: create(:member), primary: true)
+    old_membership.member_memberships << old_mm
+    old_membership.save
+
+    visit memberships_path
+    must_have_content current_membership.primary_member.name
+    wont_have_content old_membership.primary_member.name
+    visit memberships_path(year: 2013)
+    wont_have_content current_membership.primary_member.name
+    must_have_content old_membership.primary_member.name
+  end
+
   it "adds an individual membership" do
     member = create(:member)
     visit new_membership_path
