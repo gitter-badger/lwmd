@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  MEMBER_SEED = 134
   enum gender: [ :male, :female ]
 
   ### Relations
@@ -20,6 +21,10 @@ class Member < ActiveRecord::Base
   validates :email,
     presence: true
 
+  validates :member_number,
+    uniqueness: true,
+    numericality: { only_integer: true }
+
   validates_format_of :email,
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
     on: :create
@@ -31,8 +36,19 @@ class Member < ActiveRecord::Base
     presence: {message: "is required if cell phone isn't given"},
     unless: ->(member){member.cell_phone.present?}
 
+  ### Callbacks
+  before_validation :generate_member_number, on: :create
+
   ### Instance Methods
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def generate_member_number
+    if member_number.blank?
+      position =  self.new_record? ? Member.count + 1 : id
+      self.member_number = Integer(Date.today.year.to_s \
+        + (position + MEMBER_SEED).to_s.rjust(5, "0"))
+    end
   end
 end
