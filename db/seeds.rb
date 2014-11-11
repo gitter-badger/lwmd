@@ -8,4 +8,6 @@
 Member.create(first_name: "PTC",
               last_name: "Admin",
               email: ENV['EMAIL_FROM_ADDRESS'],
-              )
+              cell_phone: "412-555-1212",
+              password: ENV['ADMIN_PASSWORD'],
+              is_admin: true)
