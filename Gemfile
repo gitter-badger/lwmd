@@ -10,6 +10,9 @@ gem 'rails_12factor' #for heroku platform features
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# authentication
+gem 'devise'
+
 # haml good. erb bad.
 gem 'haml'
 

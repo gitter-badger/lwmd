@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  before_action :authenticate_member!
 
   def index
     @current_year = params[:year] || Date.today.year

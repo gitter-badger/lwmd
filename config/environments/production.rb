@@ -14,6 +14,20 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Mailer settings
+  ActionMailer::Base.smtp_settings = {
+    :address        => ENV['SMTP_SERVER'],
+    :port           => ENV['SMTP_PORT'],
+    :user_name      => ENV['SMTP_USERNAME'],
+    :password       => ENV['SMTP_PASSWORD'],
+    :domain         => ENV['SMTP_HELO_DOMAIN'],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { :host => ENV['BASE_URL'] || 'http://members.pittsburghtriathlonclub.com' }
+
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
@@ -54,7 +68,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "http://members.pittsburghtriathlonclub.com"
+  config.action_controller.asset_host = ENV['BASE_URL'] || "http://members.pittsburghtriathlonclub.com"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

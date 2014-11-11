@@ -1,4 +1,9 @@
 class Member < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable
+         
   MEMBER_SEED = 134
   enum gender: [ :male, :female ]
 
@@ -19,7 +24,7 @@ class Member < ActiveRecord::Base
     presence: true
 
   validates :email,
-    presence: true
+    uniqueness: true
 
   validates :member_number,
     uniqueness: true,
