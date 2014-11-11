@@ -12,6 +12,7 @@ gem 'pg'
 
 # authentication
 gem 'devise'
+gem 'devise_invitable', '~> 1.3.4' # invite members who register
 
 # haml good. erb bad.
 gem 'haml'
