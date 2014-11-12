@@ -37,4 +37,19 @@ class IntegrationTest < UnitTest
   after do
 
   end
+
+  def sign_in(member)
+    visit new_member_session_path
+    within("form.new_member") do
+      fill_in 'member_email', with: member.email
+      fill_in 'member_password', with: member.password
+      click_on 'Log in'
+    end
+  end
+
+  def sign_in_as_admin
+    admin = create(:admin)
+    sign_in(admin)
+    admin
+  end
 end

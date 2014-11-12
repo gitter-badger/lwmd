@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MembershipIntegrationTest < IntegrationTest
   before do
-
+    @admin = sign_in_as_admin
   end
 
   it "can view a list of memberships" do
