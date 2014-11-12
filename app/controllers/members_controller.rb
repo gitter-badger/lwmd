@@ -12,8 +12,9 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
-
+    @member.password = 'default_password'
     if @member.save
+      @member.invite!(current_member)
       flash[:notice] = "Member added successfully"
       redirect_to members_path
     else
