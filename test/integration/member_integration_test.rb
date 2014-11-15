@@ -73,6 +73,17 @@ class MemberIntegrationTest < IntegrationTest
     end
   end
 
+  describe "a member" do
+
+    it "can log in and log out of the app" do
+      @member = create(:member, password: "password1")
+      sign_in(@member)
+      page.must_have_content("Signed in successfully.")
+      click_link('Logout')
+      page.must_have_content("Log in")
+    end
+  end
+
   describe "an invited member" do
 
     it "sets up an account from an invitation" do
