@@ -1,0 +1,23 @@
+.ui.two.column.relaxed.grid
+  .column
+    .ui.fluid.form.segment
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        %h3.ui.header Log in
+        .field
+          = f.label :email
+          = f.email_field :email, autofocus: true, placeholder: "email", type: "text"
+        .field
+          = f.label :password
+          = f.password_field :password, autocomplete: "off", type: "password", placeholder: "email"
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me
+        = f.submit "Log in", class: "ui blue submit button"
+        = render "devise/shared/links"
+  .column
+    .ui.fluid.form.segment
+      %h3.ui.header Not a member? Join now!
+      .field
+        %a#btn_lnk{:href => "http://www.active.com/event_detail.cfm?event_id=2120055", :target => "_blank"}
+          %span#btn_txt Become a PTC Member Today!

@@ -24,6 +24,8 @@ class MemberIntegrationTest < IntegrationTest
       fill_in 'Notes', :with => 'These are notes'
     end
     click_button 'Add Member'
+    ActionMailer::Base.deliveries.last[:to].to_s.must_equal "user@example.com"
+    ActionMailer::Base.deliveries.last[:subject].to_s.must_include "Pittsburgh Triathlon Club"
     page.must_have_css('.ui.blue.message.closable')
     Address.last.city.must_equal 'Anytown'
   end

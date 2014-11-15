@@ -1,0 +1,8 @@
+= form_for(resource, as: resource_name, url: confirmation_path(resource_name)), html: { method: :post }) do |f|
+  = devise_error_messages!
+  %h3.ui.header Resend confirmation instructions
+  .field
+    = f.label :email
+    = f.email_field :email, autofocus: true
+  = f.submit "Resend confirmation instructions", class: "ui blue submit button"
+  = render "devise/shared/links"

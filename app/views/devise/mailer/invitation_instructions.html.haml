@@ -1,0 +1,15 @@
+%p
+  Hi #{@resource.name}! This email is to let you know that you now have an account in the Pittsburgh Triathlon Club membership database at
+  = link_to "#{root_url.to_s}", accept_invitation_url(@resource, invitation_token: @token)
+%p
+  Set up your account to get your PTC Virtual Membership Card, see sponsor
+  discounts, and more!
+%p
+  Click
+  = link_to "here", accept_invitation_url(@resource, invitation_token: @token)
+  to connect up with the PTC.
+%p
+  If you didn't register for Pittsburgh Triathlon Club membership, someone
+  probably entered your email by mistake. We would appreciate it if you
+  could reply to this email to let us know so we can track down the issue.
+  Otherwise you can safely ignore this email.
