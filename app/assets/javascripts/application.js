@@ -11,5 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery.min
+//= require jquery_ujs
 //= require semantic-ui
 //= require inputs
