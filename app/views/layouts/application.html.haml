@@ -17,11 +17,7 @@
     }
   = csrf_meta_tags
 %body
-  .ui.main.menu
-    .item
-      = image_tag("tri-club-logo.png", alt:"PTC Logo")
-    .item
-      %b Pittsburgh Triathlon Club Membership Directory
+  = render partial: "layouts/menu"
   - flash.each do |key, value|
     %div{:class => "#{flash_class(key)} closable"}
       %i.close.icon

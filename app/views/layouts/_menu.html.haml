@@ -1,0 +1,12 @@
+.ui.main.menu
+  .item
+    = image_tag("tri-club-logo.png", alt:"PTC Logo")
+  .item
+    %b Pittsburgh Triathlon Club Membership Directory
+  - if member_signed_in?
+    .right.menu
+      .ui.dropdown.item
+        = current_member.name
+        %i.dropdown.icon
+        .menu
+          = link_to('Logout', destroy_member_session_path, method: :delete, class: "item")
