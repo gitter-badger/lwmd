@@ -45,11 +45,20 @@ class IntegrationTest < UnitTest
       fill_in 'member_password', with: member.password
       click_on 'Log in'
     end
+    page.must_have_content("Signed in successfully.")
+  end
+
+  def sign_in_as_member
+    member = create(:member)
+    sign_in(member)
+    page.must_have_content "Hello #{member.name}"
+    member
   end
 
   def sign_in_as_admin
     admin = create(:admin)
     sign_in(admin)
+    page.must_have_content "Memberships"
     admin
   end
 end
