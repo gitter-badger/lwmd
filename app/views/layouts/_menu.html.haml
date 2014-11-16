@@ -9,4 +9,8 @@
         = current_member.name
         %i.dropdown.icon
         .menu
-          = link_to('Logout', destroy_member_session_path, method: :delete, class: "item")
+          - if current_member.is_admin?
+            = link_to 'Memberships', memberships_path, class: "item"
+            = link_to 'Members', members_path, class: "item"
+          = link_to 'Profile', member_path(current_member), class: "item"
+          = link_to 'Logout', destroy_member_session_path, method: :delete, class: "item"
