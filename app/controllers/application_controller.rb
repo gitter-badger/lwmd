@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     if current_member.is_admin?
       memberships_path
     else
-      member_path(current_member)
+      member_root_path
     end
   end
 end

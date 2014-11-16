@@ -57,4 +57,8 @@ class Member < ActiveRecord::Base
         + (position + MEMBER_SEED).to_s.rjust(5, "0"))
     end
   end
+
+  def role
+    is_admin? ? "admin" : "member"
+  end
 end

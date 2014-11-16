@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'static_pages#home'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -14,8 +12,21 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :members
+  resources :members do
+    get :home, on: :member
+  end
   resources :memberships
+
+  get 'profile',    to: 'static_pages#profile'
+
+  root :to => 'memberships#index',
+    :constraints => RoleConstraint.new("admin"),
+    as: :admin_root
+  root :to => 'static_pages#profile',
+    :constraints => RoleConstraint.new("member"),
+    as: :member_root
+  root :to => 'static_pages#home',
+    as: :unauthenticated_root
 
   # Example resource route with options:
   #   resources :products do

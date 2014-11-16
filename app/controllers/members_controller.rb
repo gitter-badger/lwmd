@@ -37,7 +37,10 @@ class MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-
+    if params[:member][:password].blank?
+      params[:member].delete(:password)
+      params[:member].delete(:password_confirmation)
+    end
     if @member.update(member_params)
       flash[:notice] = "Member updated successfully"
       redirect_to members_path
