@@ -1,1 +1,8 @@
-%p hello world this is the unauthenticated home page
+.ui.stackable.page.grid
+  .two.column.row
+    .column
+      .ui.fluid.form.segment
+        = render partial: "shared/login"
+    .column
+      .ui.fluid.form.segment
+        = render partial: "shared/register"
