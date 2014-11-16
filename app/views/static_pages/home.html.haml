@@ -1,11 +1,4 @@
-.ui.middle.aligned.stackable.page.grid
-  .two.column.row
-    .column
-      %h3.ui.white.header PTC Membership Database
-      .sub.header
-        Your resource for managing membership, accessing sponsor discounts, and more!
-    .column
-      .ui.fluid.form.raised.segment
-        = render partial: "shared/login"
-      .ui.fluid.form.raised.segment
-        = render partial: "shared/register"
+.ui.two.column.doubling.relaxed.page.grid
+  .column
+    = render partial: "shared/login"
+  .column

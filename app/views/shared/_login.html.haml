@@ -1,4 +1,7 @@
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+.ui.attached.message
+  .header PTC Membership Database
+  %p Your resource for managing membership, accessing sponsor discounts, and more!
+= form_for resource, as: resource_name, url: session_path(resource_name), :html => { class: "ui attached fluid form segment" } do |f|
   %h3.ui.header Log in
   .field
     = f.label :email
@@ -12,3 +15,7 @@
       = f.label :remember_me
   = f.submit "Log in", class: "ui blue submit button"
   = render "devise/shared/links"
+.ui.bottom.attached.info.message
+  .header Not a member? Join now!
+  %p
+    = link_to "Become a PTC Member Today!", "http://www.active.com/event_detail.cfm?event_id=2120055", :target => "_blank"

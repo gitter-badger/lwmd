@@ -39,8 +39,8 @@ class IntegrationTest < UnitTest
   end
 
   def sign_in(member)
-    visit new_member_session_path
-    within("form.new_member") do
+    visit unauthenticated_root_path
+    within("form#new_member") do
       fill_in 'member_email', with: member.email
       fill_in 'member_password', with: member.password
       click_on 'Log in'

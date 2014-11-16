@@ -79,9 +79,8 @@ class MemberIntegrationTest < IntegrationTest
       @member = create(:member, password: "password1")
       sign_in(@member)
       page.must_have_content("Signed in successfully.")
-      page.must_have_content( @member.name)
       click_link('Logout')
-      page.must_have_content("hello world")
+      page.must_have_content("PTC Membership Database")
     end
   end
 
