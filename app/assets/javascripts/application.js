@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require semantic-ui
 //= require inputs
+//= require jquery.vegas
+//= require vegas

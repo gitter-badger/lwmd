@@ -23,4 +23,6 @@
       %div{:class => "#{flash_class(key)} closable"}
         %i.close.icon
         = value
+  - else
+    = content_tag(:div, "", id: 'home_hero_image', data:{image_path: asset_path("ptc_hero_1.jpg")})
   = yield
