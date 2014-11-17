@@ -1,1 +1,31 @@
-%p hello #{@member.name} this is your profile page
+.ui.stackable.relaxed.grid
+  .eight.wide.column
+    .ui.fluid.segment
+      %h2.ui.header PTC Virtual Membership Card
+      .ui.two.column.grid
+        .column
+          %i.huge.circular.user.icon
+        .column
+          %h3.ui.header
+            = @member.name
+          %p
+            ID:
+            %b=@member.member_number
+          %p
+            %span Status:
+            - if @member.paid_up?
+              %span.ui.green.header
+                ACTIVE
+              %br
+              %span Expires:
+              = @member.current_membership.expires_on.strftime("%b %d, %Y")
+              %br
+              %span Member since:
+              = @member.since
+            - else
+              %span.ui.red.header
+                EXPIRED
+
+  .right.floated.four.wide.column
+    .ui.fluid.segment
+      %h2.ui.header Resources

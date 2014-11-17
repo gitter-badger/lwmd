@@ -46,6 +46,14 @@ class Member < ActiveRecord::Base
   before_validation :generate_member_number, on: :create
 
   ### Instance Methods
+  def active_years
+    memberships.any? ? memberships.pluck(:year) : []
+  end
+
+  def current_membership
+    memberships.where(year: Date.today.year).first
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
@@ -58,7 +66,19 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def paid_up?
+    active_years.include? Date.today.year
+  end
+
+  def lapsed?
+    memberships.any? && !paid_up?
+  end
+
   def role
     is_admin? ? "admin" : "member"
+  end
+
+  def since
+    active_years.min
   end
 end
