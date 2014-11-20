@@ -1,5 +1,9 @@
 class MembersController < ApplicationController
   before_action :authenticate_member!
+  before_action :check_for_admin!,
+    except: [:show, :edit, :update]
+  before_action ->(member=params[:id]) { check_for_admin_or_current_member! member },
+    only: %w{show edit update}
 
   def index
     @members = Member.order('last_name')

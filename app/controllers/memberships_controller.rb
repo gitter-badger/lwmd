@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_member!
+  before_action :check_for_admin!
 
   def index
     @current_year = params[:year] || Date.today.year

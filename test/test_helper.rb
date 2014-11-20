@@ -51,7 +51,8 @@ class IntegrationTest < UnitTest
   def sign_in_as_member
     member = create(:member)
     sign_in(member)
-    page.must_have_content "Hello #{member.name}"
+    page.must_have_content "PTC Virtual Membership Card"
+    page.must_have_content member.name
     member
   end
 
