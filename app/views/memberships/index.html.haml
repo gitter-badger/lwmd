@@ -1,7 +1,7 @@
 .four.column.stackable.ui.grid
   .column
     %h2.ui.header
-      Memberships
+      Memberships (#{@memberships_count} total)
   .column
     .ui.selection.dropdown
       %input{name: "year", type: "hidden", id: "year_selector"}
@@ -31,7 +31,7 @@
       %th Member Count
       %th Actions
   %tbody
-    - @memberships.each do |ms|
+    - @unique_memberships.each do |ms|
       %tr{id: "#{ms.id}"}
         %td= ms.year
         %td= ms.category
