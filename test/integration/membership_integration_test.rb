@@ -7,10 +7,10 @@ class MembershipIntegrationTest < IntegrationTest
 
   it "can view a list of memberships" do
     im = build(:individual_membership)
-    mm = build(:member_membership, member: create(:member), primary: true)
+    mm = build(:member_membership, member: create(:member, last_name: "Smith"), primary: true)
     im.member_memberships << mm
     im.save
-    primary_member = create(:member)
+    primary_member = create(:member, last_name: "Jones")
     fm = build(:family_membership)
     pmm = build(:member_membership, member: primary_member, primary: true)
     fm.member_memberships << pmm
@@ -21,9 +21,19 @@ class MembershipIntegrationTest < IntegrationTest
     end
     fm.save
     visit memberships_path
-    must_have_content im.primary_member.name
-    fm.members.each do |m|
-      must_have_content m.name
+    ## Test order as well as presence
+    within("tbody") do
+      within(:xpath, './tr[1]') do
+        fm.members.each do |m|
+          must_have_content m.name
+        end
+      end
+      within(:xpath, './tr[2]') do
+        must_have_content im.primary_member.name
+      end
+    end
+    within("h2.ui.header") do
+      must_have_content "Memberships (5 total)"
     end
   end
 
