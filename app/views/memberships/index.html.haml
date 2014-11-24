@@ -27,7 +27,6 @@
       %th Year
       %th Category
       %th Date Paid
-      %th Expires
       %th Member Count
       %th Actions
   %tbody
@@ -36,16 +35,15 @@
         %td= ms.year
         %td= ms.category
         %td= ms.date_paid
-        %td= ms.expires_on
         %td
           .list
-            - if ms.primary_member.present?
-              .item
-                %i.large.user.icon
-                #{ms.primary_member.name}
-            - if ms.family_members.any?
-              - ms.family_members.each do |member|
+            - ms.member_memberships.each do |mm|
+              - if mm.primary?
+                .item
+                  %i.large.user.icon
+                  = mm.member.name
+              - else
                 .item
                   %i.small.user.icon
-                  = member.name
+                  = mm.member.name
         %td

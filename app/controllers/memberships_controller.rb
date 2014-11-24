@@ -4,9 +4,11 @@ class MembershipsController < ApplicationController
 
   def index
     @current_year = params[:year] || Date.today.year
-    @memberships = Membership.joins(:members).where(year: @current_year)
+    @memberships = Membership.includes(:members)
+                             .where(year: @current_year)
+                             .order('members.last_name')
+    @memberships_count = @memberships.joins(:members).count
     @unique_memberships = @memberships.uniq
-    @memberships_count = @memberships.count
     @years = Membership.all.pluck(:year).uniq
   end
 
