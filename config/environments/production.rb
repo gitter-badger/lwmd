@@ -3,6 +3,10 @@ Rails.application.configure do
 
   #Force SSL in prod
   config.force_ssl = true
+
+  config.to_prepare { Devise::SessionsController.force_ssl }
+  config.to_prepare { Devise::RegistrationsController.force_ssl }
+  config.to_prepare { Devise::PasswordsController.force_ssl }
   
   # Code is not reloaded between requests.
   config.cache_classes = true
