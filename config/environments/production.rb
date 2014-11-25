@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  #Force SSL in prod
+  config.force_ssl = true
+  
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -26,7 +29,7 @@ Rails.application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { :host => ENV['BASE_URL'] || 'http://members.pittsburghtriathlonclub.com' }
+  config.action_mailer.default_url_options = { :host => ENV['BASE_URL'] || '//members.pittsburghtriathlonclub.com' }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
