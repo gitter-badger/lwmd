@@ -19,16 +19,10 @@ gem 'devise_invitable', '~> 1.3.4' # invite members who register
 # haml good. erb bad.
 gem 'haml'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-
 # UI framework
 gem 'semantic-ui-sass', github: 'jwrubel/semantic-ui-sass'
 gem 'StreetAddress', '1.0.3', :require => "street_address" # E-Z Addresses
 gem 'phony_rails' # phone number formatting
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -51,7 +45,15 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'coffee-rails'
+group :assets do
+  # Use SCSS for stylesheets
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  # Use Uglifier as compressor for JavaScript assets
+  gem 'uglifier', '>= 1.3.0'
+  gem "fog", require: "fog/aws/storage"
+  gem 'asset_sync'
+end
 
 group :test do
   gem 'minitest'
