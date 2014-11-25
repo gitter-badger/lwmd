@@ -36,7 +36,7 @@ Rails.application.configure do
   config.action_controller.asset_host = ENV['ASSET_HOST'] || "//images.pittsburghtriathlonclub.com"
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
