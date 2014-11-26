@@ -52,14 +52,26 @@ class IntegrationTest < UnitTest
     member = create(:member)
     sign_in(member)
     page.must_have_content "PTC Virtual Membership Card"
-    page.must_have_content member.name
+    within(".ui.main.menu") do
+      must_have_content member.name
+      must_have_content "Profile"
+      must_have_content "Edit Account"
+      must_have_content "Logout"
+    end
     member
   end
 
   def sign_in_as_admin
     admin = create(:admin)
     sign_in(admin)
-    page.must_have_content "Memberships"
+    within(".ui.main.menu") do
+      must_have_content admin.name
+      must_have_content "Memberships"
+      must_have_content "Members"
+      must_have_content "Profile"
+      must_have_content "Edit Account"
+      must_have_content "Logout"
+    end
     admin
   end
 end
