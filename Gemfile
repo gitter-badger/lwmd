@@ -24,6 +24,10 @@ gem 'semantic-ui-sass', github: 'jwrubel/semantic-ui-sass'
 gem 'StreetAddress', '1.0.3', :require => "street_address" # E-Z Addresses
 gem 'phony_rails' # phone number formatting
 
+# user profile avatar images
+gem 'paperclip'
+gem 'aws-sdk'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
