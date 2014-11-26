@@ -5,6 +5,14 @@ class Member < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :invitable
 
+  has_attached_file :avatar,
+    :styles => { :medium => "300x300>",
+                 :small => "150x150>",
+                 :tiny => "80x80>" },
+    :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar,
+    :content_type => /\Aimage\/.*\Z/
+
   MEMBER_SEED = 134
   enum gender: [ :male, :female ]
 
