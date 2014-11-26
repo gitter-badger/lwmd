@@ -14,7 +14,7 @@ Rails.application.configure do
       :bucket => ENV['FOG_DIRECTORY'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_ACCESS_KEY']
-    }
+    },
     :path => '/:class/:attachment/:id_partition/:style/:filename'
   }
 
