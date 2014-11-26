@@ -14,12 +14,18 @@
           = f.text_field :first_name, placeholder: "First Name"
           .ui.corner.label
             %i.icon.red.asterisk
-      .field
         = f.label :last_name
         .ui.icon.input
           = f.text_field :last_name, placeholder: "Last Name"
           .ui.corner.label
             %i.icon.red.asterisk
+      .field
+        = f.label :avatar, "Profile Photo"
+        = f.file_field :avatar
+        .ui.purple.label
+          %i.white.camera.retro.icon
+          For best results, use a square photo. 500kb max.
+        = image_tag(current_member.avatar.url(:small), class: "ui small rounded image")
     .two.fields
       .field
         = f.label :email

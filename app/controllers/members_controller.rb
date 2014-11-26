@@ -58,6 +58,7 @@ class MembersController < ApplicationController
       params.require(:member)
             .permit(:first_name,
                     :last_name,
+                    :avatar,
                     :email,
                     :birthdate,
                     :gender,
