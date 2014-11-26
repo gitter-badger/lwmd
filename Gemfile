@@ -59,6 +59,10 @@ group :assets do
   gem 'asset_sync'
 end
 
+group :production do
+  gem 'heroku_rails_deflate'
+end
+
 group :test do
   gem 'minitest'
   gem 'minitest-reporters' # test output

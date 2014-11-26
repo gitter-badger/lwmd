@@ -157,6 +157,10 @@ GEM
     formatador (0.2.5)
     haml (4.0.5)
       tilt
+    heroku_rails_deflate (1.0.3)
+      actionpack (>= 3.2.13)
+      activesupport (>= 3.2.13)
+      rack (>= 1.4.5)
     hike (1.2.3)
     i18n (0.6.11)
     inflecto (0.0.2)
@@ -298,6 +302,7 @@ DEPENDENCIES
   factory_girl_rails
   fog
   haml
+  heroku_rails_deflate
   jbuilder (~> 2.0)
   jquery-rails
   launchy
