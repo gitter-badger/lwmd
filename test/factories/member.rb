@@ -6,6 +6,11 @@ FactoryGirl.define do
     active true
     cell_phone "555-555-1212"
     password  'password'
+    factory :avatar do
+       avatar_file_name { 'profile.png' }
+       avatar_content_type { 'image/png' }
+       avatar_file_size { 8 }
+     end
     after(:build) do |m|
       m.generate_member_number
     end
