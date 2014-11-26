@@ -7,16 +7,12 @@
       .ui.blue.labeled.icon.button
         %i.user.icon
         Add Member
-%table.ui.table.segment
+%table.ui.small.compact.table
   %thead
     %tr
       %th Active?
-      %th Member Number
       %th Name
       %th Email
-      %th Gender
-      %th USAT #
-      %th Birthdate
       %th Address
       %th Cell Phone
       %th Home Phone
@@ -27,12 +23,13 @@
         %td
           - if member.active?
             %i.green.checked.checkbox.icon
-        %td= member.member_number
-        %td= link_to member.name, edit_member_path(member)
+        %td
+          - if member.male?
+            %i.blue.tiny.male.icon
+          - if member.female?
+            %i.red.tiny.female.icon
+          = link_to member.name, edit_member_path(member)
         %td= mail_to member.email
-        %td= member.gender
-        %td= member.usat_number
-        %td= member.birthdate
         %td
           - unless member.address.nil?
             = member.address.full_address
@@ -42,3 +39,4 @@
         %td
           - if member.home_phone.present?
             = member.home_phone.phony_formatted(normalize: :US, spaces: '-')
+        %td
