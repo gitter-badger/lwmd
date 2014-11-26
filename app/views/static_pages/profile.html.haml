@@ -4,7 +4,7 @@
       %h2.ui.header PTC Virtual Membership Card
       .ui.two.column.grid
         .column
-          %i.huge.circular.user.icon
+          = image_tag(current_member.avatar.url(:medium), class: "ui medium rounded image")
         .column
           %h3.ui.header
             = @member.name

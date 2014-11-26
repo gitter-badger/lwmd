@@ -6,6 +6,7 @@
   - if member_signed_in?
     .right.menu
       .ui.dropdown.item
+        = image_tag(current_member.avatar.url(:tiny), class: "ui avatar image")    
         = current_member.name
         %i.dropdown.icon
         .menu
