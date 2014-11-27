@@ -10,7 +10,9 @@ FactoryGirl.define do
        avatar_file_name { 'profile.png' }
        avatar_content_type { 'image/png' }
        avatar_file_size { 8 }
-     end
+    end
+    address
+      
     after(:build) do |m|
       m.generate_member_number
     end

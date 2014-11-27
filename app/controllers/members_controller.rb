@@ -67,6 +67,6 @@ class MembersController < ApplicationController
                     :cell_phone,
                     :home_phone,
                     :notes,
-                    {address_attributes: [:full_address]})
+                    {address_attributes: [:full_address, :id]})
     end
 end

@@ -10,7 +10,13 @@ class MemberIntegrationTest < IntegrationTest
     it "can view a list of members" do
       @member = create(:member)
       visit members_path
-      must_have_content @member.name
+      within ("tbody") do
+        must_have_css(".green.checked.checkbox.icon")
+        must_have_content @member.name
+        must_have_content @member.email
+        must_have_content @member.address.full_address
+        must_have_content @member.cell_phone.phony_formatted(normalize: :US, spaces: '-')
+      end
     end
 
     it "adds a new member" do
@@ -48,16 +54,15 @@ class MemberIntegrationTest < IntegrationTest
       @member = create(:member)
       visit edit_member_path(@member)
       within("form.edit_member") do
-        page.find('#member_last_name').value.must_equal @member.last_name
-        fill_in 'Cell phone', :with => "555-555-1212"
-        fill_in 'Full address', :with => '123 Fake Street, Anytown, KS 55555'
+        find('#member_last_name').value.must_equal @member.last_name
+        fill_in 'member_cell_phone', :with => "412-123-3333"
+        fill_in 'member_address_attributes_full_address', :with => '123 Fake Street, Anytown, KS 55555'
       end
       click_button 'Save'
-      page.must_have_css('.ui.blue.message.closable')
-       # phony gem normalizes phone number on save
-       # but formatting is stripped in tests
-      @member.cell_phone.must_equal "15555551212"
-      @member.address.city.must_equal "Anytown"
+      find('.ui.blue.message.closable')
+      visit edit_member_path(@member)
+      find('#member_cell_phone').value.must_equal "14121233333"
+      find('#member_address_attributes_full_address').value.must_have_content "Anytown"
     end
 
     it "deactivates a member" do
