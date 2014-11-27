@@ -8,13 +8,11 @@
   %title Pittsburgh Triathlon Club Membership Directory
   %meta{:content => "A membership directory for the Pittsburgh Triathlon Club", :name => "description"}/
   %meta{:content => "membership directory", :name => "keywords"}/
-  %link{:href => "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700", :rel => "stylesheet", :type => "text/css"}/
-  = stylesheet_link_tag    'application', media: 'all'
+  / %link{:href => "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700", :rel => "stylesheet", :type => "text/css"}/
+  = stylesheet_link_tag 'application', media: 'all'
+  = stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.0.0/semantic.min.css', media: 'all'
   = javascript_include_tag 'application'
-  :css
-    * {
-        font-family: 'Open Sans', sans-serif;
-    }
+  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.0.0/semantic.min.js'
   = csrf_meta_tags
 %body
   - if member_signed_in?
