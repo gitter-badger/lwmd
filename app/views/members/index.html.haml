@@ -20,9 +20,9 @@
   %tbody
     - @members.each do |member|
       %tr{id: "#{member.id}"}
-        %td
+        %td.center.aligned
           - if member.active?
-            %i.green.checked.checkbox.icon
+            %i.green.checkmark.box.icon
         %td
           - if member.male?
             %i.blue.tiny.male.icon

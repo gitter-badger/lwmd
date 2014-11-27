@@ -11,7 +11,7 @@ class MemberIntegrationTest < IntegrationTest
       @member = create(:member)
       visit members_path
       within ("tbody") do
-        must_have_css(".green.checked.checkbox.icon")
+        must_have_css(".green.checkmark.box.icon")
         must_have_content @member.name
         must_have_content @member.email
         must_have_content @member.address.full_address
