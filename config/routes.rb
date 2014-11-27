@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :members do
     get :home, on: :member
+    post :invite, on: :member
   end
   resources :memberships
 

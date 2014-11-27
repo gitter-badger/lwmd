@@ -53,6 +53,13 @@ class MembersController < ApplicationController
     end
   end
 
+  def invite
+    @member = Member.find(params[:id])
+    @member.invite!(current_member)
+    flash[:notice] = "Successfully invited #{@member.name}"
+    redirect_to members_path
+  end
+
   private
     def member_params
       params.require(:member)
