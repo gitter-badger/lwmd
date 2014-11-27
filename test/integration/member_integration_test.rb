@@ -97,6 +97,15 @@ class MemberIntegrationTest < IntegrationTest
       click_link('Logout')
       page.must_have_content("PTC Membership Database")
     end
+
+    it "knows whether a user has a profile photo" do
+      @member = create(:member)
+      sign_in(@member)
+      page.must_have_content("Update your profile photo")
+      @member.update_attributes!(avatar_updated_at: Date.today)
+      visit member_root_path
+      page.wont_have_content("Update your profile photo")
+    end
   end
 
   describe "an invited member" do

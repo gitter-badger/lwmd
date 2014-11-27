@@ -26,6 +26,16 @@
               %span.ui.red.header
                 EXPIRED
 
-  .right.floated.four.wide.column
-    .ui.fluid.segment
-      %h2.ui.header Resources
+  .right.floated.six.wide.column
+    %h2.ui.header Info
+    .ui.divided.list
+      - if current_member.has_default_avatar?
+        .item
+          %i.yellow.warning.sign.icon
+          .content
+            .header Update your profile photo
+            .description
+              Your profile photo shows on your PTC Membership card. You should
+              %b
+                = link_to "add your photo", member_root_path
+              to your profile.

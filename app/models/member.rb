@@ -65,6 +65,10 @@ class Member < ActiveRecord::Base
     memberships.where(year: Date.today.year).first
   end
 
+  def has_default_avatar?
+    avatar_updated_at.blank?
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
