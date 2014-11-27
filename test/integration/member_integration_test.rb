@@ -76,6 +76,16 @@ class MemberIntegrationTest < IntegrationTest
         page.wont_have_css('i')
       end
     end
+
+    it "invites a member" do
+      @member = create(:member)
+      visit members_path
+      within("tr##{@member.id}") do
+        click_link('Invite')
+      end
+      page.must_have_content("Successfully invited #{@member.name}")
+      ActionMailer::Base.deliveries.last['to'].to_s.must_equal @member.email
+    end
   end
 
   describe "a member" do
