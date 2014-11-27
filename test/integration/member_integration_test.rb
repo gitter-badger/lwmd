@@ -106,7 +106,7 @@ class MemberIntegrationTest < IntegrationTest
       @member = create(:member)
       @member.invite!(@admin)
       visit accept_member_invitation_path(invitation_token: @member.raw_invitation_token)
-      page.must_have_content("Welcome to the Pittsburgh Triathlon Club!")
+      page.must_have_content("Welcome to the Pittsburgh Triathlon Club, #{@member.first_name}!")
       find("#member_invitation_token", visible: false).value.must_equal @member.raw_invitation_token
       fill_in 'member_password', with: "password1"
       fill_in 'member_password_confirmation', with: "password1"
