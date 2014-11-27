@@ -20,7 +20,6 @@ gem 'devise_invitable', '~> 1.3.4' # invite members who register
 gem 'haml'
 
 # UI framework
-gem 'semantic-ui-sass', github: 'jwrubel/semantic-ui-sass'
 gem 'StreetAddress', '1.0.3', :require => "street_address" # E-Z Addresses
 gem 'phony_rails' # phone number formatting
 

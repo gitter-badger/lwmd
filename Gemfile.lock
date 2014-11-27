@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/jwrubel/semantic-ui-sass.git
-  revision: a8067e003f58f461159bf0b8c8040263628847ff
-  specs:
-    semantic-ui-sass (0.19.3.0)
-      sass (~> 3.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -313,7 +306,6 @@ DEPENDENCIES
   rails_12factor
   sass-rails
   sdoc (~> 0.4.0)
-  semantic-ui-sass!
   spring
   uglifier (>= 1.3.0)
   unicorn
