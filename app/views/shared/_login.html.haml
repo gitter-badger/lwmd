@@ -2,6 +2,7 @@
   .header PTC Membership Database
   %p Your resource for managing membership, accessing sponsor discounts, and more!
 = form_for resource, as: resource_name, url: session_path(resource_name), :html => { class: "ui attached fluid form segment" } do |f|
+  = render partial: "shared/flash_messages"
   %h3.ui.header Log in
   .field
     = f.label :email

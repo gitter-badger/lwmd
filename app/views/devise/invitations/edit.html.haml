@@ -5,8 +5,10 @@
         .header
           Welcome to the Pittsburgh Triathlon Club, #{resource.first_name}!
         %p
-          To set up your account, just pick a password you will remember.
-          One you've set your password, your account is good to go!
+          If you have a Facebook account you can use that to log in. Using
+          your Facebook account to log in is for your convenience. The
+          PTC Membership Database will never post to your wall or store
+          your profile data. 
         - if resource.is_admin?
           %p
             %strong NOTE:
@@ -15,6 +17,13 @@
       = form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put, class: "ui form attached fluid segment" } do |f|
         = devise_error_messages!
         = f.hidden_field :invitation_token
+        .field
+          = link_to member_omniauth_authorize_path(:facebook) do
+            .ui.facebook.button
+              %i.facebook.icon
+              Use my Facebook account
+        .field
+          %p Or pick a password
         .field
           = f.label :password
           = f.password_field :password

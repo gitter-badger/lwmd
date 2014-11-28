@@ -8,7 +8,6 @@
   %title Pittsburgh Triathlon Club Membership Directory
   %meta{:content => "A membership directory for the Pittsburgh Triathlon Club", :name => "description"}/
   %meta{:content => "membership directory", :name => "keywords"}/
-  / %link{:href => "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700", :rel => "stylesheet", :type => "text/css"}/
   = stylesheet_link_tag 'application', media: 'all'
   = stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.0.0/semantic.min.css', media: 'all'
   = javascript_include_tag 'application'
@@ -17,10 +16,7 @@
 %body
   - if member_signed_in?
     = render partial: "layouts/menu"
-    - flash.each do |key, value|
-      %div{:class => "#{flash_class(key)} closable"}
-        %i.close.icon
-        = value
+    = render partial: "shared/flash_messages"
   - else
     = content_tag(:div, "", id: 'home_hero_image', data:{image_path: asset_path("ptc_hero_1.jpg")})
   = yield
