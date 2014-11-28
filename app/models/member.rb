@@ -4,6 +4,7 @@ class Member < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
          :invitable
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_attached_file :avatar,
     :styles => { :medium => "300x300#",
