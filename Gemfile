@@ -74,6 +74,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'quiet_assets'
   gem 'factory_girl_rails' # better test fixtures
   gem 'dotenv-rails' # store environment variables locally in .env file
 end
