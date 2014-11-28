@@ -1,4 +1,4 @@
-.ui.page.grid
+.ui.two.column.doubling.relaxed.page.grid
   .column
     .ui.raised.segment
       .ui.attached.message
@@ -8,7 +8,7 @@
           If you have a Facebook account you can use that to log in. Using
           your Facebook account to log in is for your convenience. The
           PTC Membership Database will never post to your wall or store
-          your profile data. 
+          your profile data.
         - if resource.is_admin?
           %p
             %strong NOTE:
@@ -18,17 +18,17 @@
         = devise_error_messages!
         = f.hidden_field :invitation_token
         .field
-          = link_to member_omniauth_authorize_path(:facebook) do
-            .ui.facebook.button
-              %i.facebook.icon
-              Use my Facebook account
-        .field
-          %p Or pick a password
-        .field
-          = f.label :password
-          = f.password_field :password
-        .field
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation
-        .field
-          = f.submit "Set up your account", class: "ui blue submit button"
+          = render partial: "shared/omniauth_links"
+        %h4.ui.header Or set a password
+        .ui.small.raised.form.segment
+          .ui.yellow.ribbon.label
+            = "Your username is #{resource.email}"
+          .field
+            = f.label :password
+            = f.password_field :password
+          .field
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
+          .field
+            = f.submit "Set up your account", class: "ui blue submit button"
+  .column
