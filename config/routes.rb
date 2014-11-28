@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :members
+  devise_for :members,
+    :controllers => { :omniauth_callbacks => "members/omniauth_callbacks",
+                      :invitations => 'members/invitations'
+                    }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

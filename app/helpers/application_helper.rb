@@ -8,10 +8,14 @@ module ApplicationHelper
     @resource ||= Member.new
   end
 
+  def resource_class
+    devise_mapping.to
+  end
+
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:member]
   end
-  
+
   def flash_class(level)
     case level
       when "success" then "ui green message"
