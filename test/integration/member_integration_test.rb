@@ -110,6 +110,11 @@ class MemberIntegrationTest < IntegrationTest
 
   describe "an invited member" do
 
+    before do
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.add_mock(:facebook, {:uid => '12345'})
+    end
+
     it "sets up an account from an invitation" do
       @admin = create(:member)
       @member = create(:member)
@@ -123,6 +128,31 @@ class MemberIntegrationTest < IntegrationTest
       page.must_have_css('.ui.blue.message.closable')
       page.must_have_content("You are now signed in.")
       page.must_have_content @member.name
+    end
+
+    it "can use Facebook to connect" do
+      @admin = create(:member)
+      @member = create(:member)
+      @member.invite!(@admin)
+      visit accept_member_invitation_path(invitation_token: @member.raw_invitation_token)
+      page.driver.browser.set_cookie('token=#{@member.raw_invitation_token}')
+      within('form#edit_member') do
+        find('#fb_login').click
+      end
+      page.must_have_css('.ui.blue.message.closable')
+      page.must_have_content("Successfully authenticated from Facebook account")
+      page.driver.browser.clear_cookies
+      logout(:member)
+      visit unauthenticated_root_path
+      within('form#new_member') do
+        find('#fb_login').click
+      end
+      page.must_have_content("Successfully authenticated from Facebook account")
+    end
+
+    it "knows when an uninvited member can't connect via facebook" do
+      # click link on home page to log in via FB when no invitation token
+      # present. Should fail with "Sorry! We could not connect you with any member account."
     end
   end
 end

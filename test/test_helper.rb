@@ -22,6 +22,8 @@ end
 class IntegrationTest < UnitTest
   include Capybara::DSL
   include Rails.application.routes.url_helpers
+  include Warden::Test::Helpers
+  Warden.test_mode!
 
   Capybara.register_driver :rack_test do |app|
     Capybara::RackTest::Driver.new app, \
