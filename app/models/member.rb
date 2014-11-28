@@ -97,4 +97,18 @@ class Member < ActiveRecord::Base
   def since
     active_years.min
   end
+
+  ### Class Methods
+  def self.from_omniauth(auth, token)
+    if token.present?
+      accept_invitation!(:invitation_token => token,
+                         :provider => auth.provider,
+                         :uid => auth.uid,
+                         :avatar => auth.info.image)
+    else
+      # if not found, a record will still be returned since this expects a
+      # Member object
+      where(provider: auth.provider, uid: auth.uid).first_or_initialize
+    end
+  end
 end
