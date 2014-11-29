@@ -16,6 +16,7 @@ gem 'pg'
 gem 'devise'
 gem 'devise_invitable', '~> 1.3.4' # invite members who register
 gem 'omniauth-facebook' # sign in with FB
+gem 'omniauth-google-oauth2' # sign in with Google
 
 # haml good. erb bad.
 gem 'haml'
