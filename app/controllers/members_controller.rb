@@ -6,7 +6,7 @@ class MembersController < ApplicationController
     only: %w{show edit update}
 
   def index
-    @members = Member.order('last_name')
+    @members = Member.includes(:address).order('last_name')
   end
 
   def new
