@@ -10,6 +10,7 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
+    :s3_host_alias => ENV['FOG_DIRECTORY'],
     :s3_credentials => {
       :bucket => ENV['FOG_DIRECTORY'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
