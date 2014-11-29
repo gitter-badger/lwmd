@@ -12,6 +12,7 @@
 //
 //= require jquery.min
 //= require jquery_ujs
+//= require browser_checker
 //= require inputs
 //= require jquery.vegas
 //= require vegas
