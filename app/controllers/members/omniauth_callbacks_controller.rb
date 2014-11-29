@@ -3,6 +3,10 @@ class Members::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # invitation_token will be included if the member is setting up
     # the connection for the first time
     auth = request.env["omniauth.auth"]
+
+    # not getting provider or ui
+    logger.info auth.inspect
+    
     token = cookies[:token]
     @member = Member.from_omniauth(auth, token)
     cookies.delete :token
