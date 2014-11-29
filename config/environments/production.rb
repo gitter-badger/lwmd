@@ -12,6 +12,7 @@ Rails.application.configure do
     :storage => :s3,
     :url => ':s3_alias_url',
     :s3_host_alias => ENV['ASSET_HOST'],
+    :s3_protocol => '',
     :s3_credentials => {
       :bucket => ENV['FOG_DIRECTORY'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
