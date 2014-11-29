@@ -43,7 +43,7 @@ Rails.application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { :host => ENV['BASE_URL'] || '//members.pittsburghtriathlonclub.com' }
+  config.action_mailer.default_url_options = { :host => ENV['BASE_URL'] || 'https://members.pittsburghtriathlonclub.com' }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
