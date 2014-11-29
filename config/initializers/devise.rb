@@ -276,6 +276,15 @@ Devise.setup do |config|
     :scope => 'public_profile',
     :image_size => 'large',
     :secure_image_url => true
+
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"],
+    {
+      :name => "google",
+      :scope => "profile",
+      :prompt => "select_account",
+      :image_aspect_ratio => "square",
+      :image_size => 300
+    }
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
