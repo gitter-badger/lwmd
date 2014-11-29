@@ -1,8 +1,10 @@
 - if devise_mapping.omniauthable?
-  - resource_class.omniauth_providers.each do |provider|
-    = link_to omniauth_authorize_path(resource_name, provider), id: "fb_login" do
-
-      %div{:class => "ui #{provider.to_s} fluid button"}
-        %i{:class => "#{provider.to_s} square large icon"}
-        Log in with #{provider.to_s.titleize}
-    %br/
+  = link_to omniauth_authorize_path(:member, "facebook"), id: "facebook_login" do
+    %div{:class => "ui facebook fluid button"}
+      %i{:class => "facebook square large icon"}
+      Log in with Facebook
+  %br/
+  = link_to omniauth_authorize_path(:member, "google"), id: "google_login" do
+    %div{:class => "ui google plus fluid button"}
+      %i{:class => "google plus square large icon"}
+      Log in with Google
