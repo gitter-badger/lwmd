@@ -1,0 +1,20 @@
+.ui.relaxed.page.grid
+  .column
+    .ui.top.attached.center.aligned.blue.header
+      %h2.ui.icon.header
+        %i.help.icon
+        .content
+          Help
+          .sub.header
+            Something's not right? Hopefully we can fix it. You can always email
+            = mail_to "info@pittsburghtriathlonclub.com"
+            for help if you don't find what you are looking for here.
+    .ui.attached.segment
+      %h3.ui.header I can't log in
+      = render partial: "shared/flash_messages"
+      = render partial: "shared/enter_email"
+      .ui.divider
+      %h3.ui.header I want to join or renew
+      %p
+        Awesome! Join the PTC or renew your membership
+        = link_to "here", "http://www.active.com/event_detail.cfm?event_id=2120055", :target => "_blank"

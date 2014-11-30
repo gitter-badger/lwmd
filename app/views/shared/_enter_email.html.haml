@@ -1,0 +1,9 @@
+%p
+  Enter the email address you used to register with the PTC, and we will
+  figure out what's up.
+= form_tag verify_path, class: "ui form" do |f|
+  .inline.field
+    = label_tag 'Email'
+    = email_field_tag 'email', nil, autofocus: true, placeholder: "you@example.com", type: "text"
+  .field
+    = submit_tag 'Check email', class: "ui blue submit button"

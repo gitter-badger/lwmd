@@ -1,0 +1,14 @@
+.ui.relaxed.page.grid
+  .column
+    .ui.segment
+      %h2.ui.header Success
+      = render partial: "shared/flash_messages"
+      .ui.big.link.list
+        .item
+          %i.big.home.icon
+          .content
+            = link_to "Return to the home page", unauthenticated_root_path
+        .item
+          %i.big.help.icon
+          .content
+            = link_to "Back to help", help_path
