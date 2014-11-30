@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   end
   resources :memberships
 
+  get 'help', to: 'helps#index'
+  post 'verify', to: 'helps#verify'
+  get 'confirm', to: 'helps#confirm'
   get 'profile',    to: 'static_pages#profile'
 
   root :to => 'memberships#index',
