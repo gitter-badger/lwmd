@@ -18,5 +18,11 @@
     = render partial: "layouts/menu"
     = render partial: "shared/flash_messages"
   - else
+    .ui.secondary.menu.top
+      .right.item
+        = link_to help_path do
+          .ui.teal.large.button
+            %i.help.icon
+            Help
     = content_tag(:div, "", id: 'home_hero_image', data:{image_path: asset_path("ptc_hero_1.jpg")})
   = yield
