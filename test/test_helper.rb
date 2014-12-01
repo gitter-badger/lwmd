@@ -77,3 +77,11 @@ class IntegrationTest < UnitTest
     admin
   end
 end
+
+class ApiTest < IntegrationTest
+  include Rack::Test::Methods
+
+  def app
+    Capybara.app
+  end
+end
