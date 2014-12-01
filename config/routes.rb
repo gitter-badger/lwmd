@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   root :to => 'static_pages#home',
     as: :unauthenticated_root
 
+  namespace :api, defaults: { format: 'json' } do
+    get :ping, to: 'endpoints#ping'
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do
