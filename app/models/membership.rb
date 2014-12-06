@@ -6,6 +6,7 @@ class Membership < ActiveRecord::Base
   ### Relations
   has_many :member_memberships, inverse_of: :membership
   has_many :members, through: :member_memberships
+  has_many :member_addresses, through: :members, source: :address
   has_one :primary_member_membership, -> { where primary: true },
                               class_name: "MemberMembership"
   has_one :primary_member, through: :primary_member_membership,
@@ -17,6 +18,9 @@ class Membership < ActiveRecord::Base
 
   accepts_nested_attributes_for :member_memberships,
     reject_if: proc { |m| m[:member_id].blank? }
+
+  accepts_nested_attributes_for :members
+  accepts_nested_attributes_for :member_addresses
 
   ### Validations
 

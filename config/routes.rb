@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     get :ping, to: 'endpoints#ping'
+
+    resources :memberships, only: :create
   end
   # Example resource route with options:
   #   resources :products do
