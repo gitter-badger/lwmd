@@ -11,7 +11,7 @@ class Api::MembershipsController < ApplicationController
                                   price_paid: mp[:price_paid])
     members_attributes = membership_params[:members_attributes]
     members_attributes.each do |k,v|
-      v[:gender] == "m" ? v[:gender] = 0 : v[:gender] = 1
+      v[:gender] == "m" || "Male" ? v[:gender] = 0 : v[:gender] = 1
       initial_password = "password" + \
       SecureRandom.random_number(9999).to_s.rjust(4, "0")
       member = Member.find_or_initialize_by(email: v[:email]) do |m|
