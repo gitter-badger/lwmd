@@ -46,4 +46,19 @@ class ApplicationController < ActionController::Base
     flash[:error] = "You are not authorized to perform this action."
     redirect_to(root_path_by_role)
   end
+
+  ###
+  # API filter methods
+
+  def validate_api_key
+    unless api_key_valid?
+      render json: {message: 'Invalid authentication token provided.'}, status: :bad_request
+      return
+    end
+  end
+
+  def api_key_valid?
+    @authorization = request.headers["Api-Key"]
+    return true if @authorization.present? && @authorization == ZAPIER_SECRET_TOKEN
+  end
 end
