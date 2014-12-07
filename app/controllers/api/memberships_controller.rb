@@ -1,7 +1,6 @@
 class Api::MembershipsController < ApplicationController
   protect_from_forgery with: :null_session
   before_filter :validate_api_key
-  wrap_parameters format: [:json]
 
   def create
     mp = params[:membership]
