@@ -29,6 +29,14 @@
   .right.floated.six.wide.column
     %h2.ui.header Info
     .ui.divided.list
+      .item
+        %i.big.blue.external.link.icon
+        .content
+          .header
+            = link_to "PTC Sponsor Discounts", "http://www.pittsburghtriathlonclub.com/club-discount-codes/", target: :blank
+          .description
+            Password is
+            %em kienle2014kona
       - if current_member.has_default_avatar?
         .item
           %i.big.yellow.warning.sign.icon
