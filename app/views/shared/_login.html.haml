@@ -1,6 +1,8 @@
 .ui.attached.message
-  .header PTC Membership Database
-  %p Your resource for managing membership, accessing sponsor discounts, and more!
+  .ui.basic.segment
+    = image_tag("PTCLogo-dark.png", alt:"PTC Logo")
+    %b PTC Membership Database
+    %p Your resource for managing membership, accessing sponsor discounts, and more!
 = form_for resource, as: resource_name, url: session_path(resource_name), :html => { class: "ui attached fluid form segment" } do |f|
   = render partial: "shared/flash_messages"
   %h2.ui.header Log in
