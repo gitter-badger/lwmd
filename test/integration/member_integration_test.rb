@@ -45,7 +45,6 @@ class MemberIntegrationTest < IntegrationTest
       page.must_have_content("First name can't be blank")
       page.must_have_content("Last name can't be blank")
       page.must_have_content("Email can't be blank")
-      page.must_have_content("Email is invalid")
       page.must_have_content("Cell phone is required if home phone isn't given")
       page.must_have_content("Home phone is required if cell phone isn't given")
     end

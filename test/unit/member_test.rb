@@ -52,6 +52,13 @@ class MemberTest < UnitTest
       member.role.must_equal "member"
     end
 
+    it "knows an adult vs child" do
+      adult = create(:member, birthdate: "1973-03-03")
+      child = create(:member, birthdate: "2007-03-03")
+      adult.adult?.must_equal true
+      child.adult?.must_equal false
+    end
+
   end
 
 end

@@ -29,6 +29,7 @@ class Member < ActiveRecord::Base
 
   ### Scopes
   scope :by_last_name, -> { order("last_name asc") }
+  scope :adults, -> { adult? == true }
 
   ### Validations
   phony_normalize :cell_phone, :default_country_code => 'US'
@@ -49,7 +50,8 @@ class Member < ActiveRecord::Base
 
   validates_format_of :email,
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
-    on: :create
+    on: :create,
+    if: :adult?
 
   validates :cell_phone,
     presence: {message: "is required if home phone isn't given"},
@@ -58,10 +60,25 @@ class Member < ActiveRecord::Base
     presence: {message: "is required if cell phone isn't given"},
     unless: ->(member){member.cell_phone.present?}
 
+  validates :birthdate,
+    presence: true
+
   ### Callbacks
   before_validation :generate_member_number, on: :create
 
   ### Instance Methods
+  def adult?
+    age.present? && age >= 13 
+  end
+
+  # from http://stackoverflow.com/a/2357790/721305
+  def age
+    if birthdate.present?
+      now = Time.now.utc.to_date
+      now.year - birthdate.year - ((now.month > birthdate.month || (now.month == birthdate.month && now.day >= birthdate.day)) ? 0 : 1)
+    end
+  end
+
   def active_years
     memberships.any? ? memberships.pluck(:year) : []
   end
