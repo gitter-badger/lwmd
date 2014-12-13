@@ -19,7 +19,7 @@ class MembershipsController < ApplicationController
     if params[:category].present? && params[:category] == "Family"
       @membership.build_family
     end
-    @members = Member.all
+    @members = Member.all.by_last_name
   end
 
   def create

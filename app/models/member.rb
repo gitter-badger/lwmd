@@ -26,6 +26,10 @@ class Member < ActiveRecord::Base
   has_many :memberships, through: :member_memberships
 
   accepts_nested_attributes_for :address
+
+  ### Scopes
+  scope :by_last_name, -> { order("last_name asc") }
+
   ### Validations
   phony_normalize :cell_phone, :default_country_code => 'US'
   phony_normalize :home_phone, :default_country_code => 'US'
