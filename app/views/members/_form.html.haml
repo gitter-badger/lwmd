@@ -25,7 +25,7 @@
         .ui.purple.label
           %i.white.camera.retro.icon
           For best results, use a square photo. 500kb max.
-        = image_tag(current_member.avatar.url(:small), class: "ui small rounded image")
+        = image_tag(@member.avatar.url(:small), class: "ui small rounded image")
     .two.fields
       .field
         = f.label :email
