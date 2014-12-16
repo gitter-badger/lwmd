@@ -79,6 +79,13 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def usat_age 
+    if birthdate.present?
+      now = Time.now.utc.to_date
+      now.year - birthdate.year
+    end
+  end
+
   def active_years
     memberships.any? ? memberships.pluck(:year) : []
   end

@@ -12,6 +12,7 @@
     %tr
       %th Active?
       %th Name
+      %th USAT Age
       %th Email
       %th Address
       %th Cell Phone
@@ -29,6 +30,7 @@
           - if member.female?
             %i.red.tiny.female.icon
           = link_to member.name, edit_member_path(member)
+        %td= member.usat_age
         %td= mail_to member.email
         %td
           - unless member.address.nil?
