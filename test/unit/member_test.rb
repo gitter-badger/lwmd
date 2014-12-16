@@ -59,6 +59,13 @@ class MemberTest < UnitTest
       child.adult?.must_equal false
     end
 
+
+    it "knows USAT Age (age at end of current year)"
+      member = create(:member, birthdate: Date.today - 35.years)
+      usat_age?.must_equal 35
+    end
+
+
   end
 
 end
