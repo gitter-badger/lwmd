@@ -1,6 +1,8 @@
 LWMD: LightWeight Membership Directory
 ====
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/PittsburghTriClub/lwmd?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 lightweight membership directory for our Tri Club. Maybe useful for anyone else with a small membership and annual dues, and needs virtual membership cards
 
 [Rails 4](http://rubyonrails.org/), [Ruby 2](https://www.ruby-lang.org/en/),
